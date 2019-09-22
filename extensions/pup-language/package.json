@@ -1,0 +1,25 @@
+{
+    "name": "pup",
+    "displayName": "pup",
+    "description": "Puppeteer syntax highlighting support",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.38.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "pup",
+            "aliases": ["Puppeteer", "pup"],
+            "extensions": [".pup"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "pup",
+            "scopeName": "source.pup",
+            "path": "./syntaxes/pup.tmLanguage.json"
+        }]
+    }
+}

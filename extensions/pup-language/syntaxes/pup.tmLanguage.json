@@ -1,0 +1,100 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Puppeteer",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#function-calls"
+		},
+		{
+			"include" : "#line-comment"
+		},
+		{
+			"include" : "#block-comment"
+		},
+		{
+			"include" : "#number-literals"
+		}
+	],
+	"repository": {
+
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.pup",
+					"match": "\\b(if|while|return)\\b"
+				},
+				{
+					"name": "storage.type.pup",
+					"match": "\\b(bool|byte|short|int|long|float|double|void|struct|fn|array|anytype)(\\**|\\b)"
+				},
+				{
+					"name" : "storage.modifier.pup",
+					"match": "\\b(pub)\\b"
+				},
+				{
+					"name" : "support.function.pup",
+					"match" : "@[_\\w]+\\b"
+				}
+			]
+		},
+		"function-calls": {
+			"patterns": [
+				{
+					"match": "\\b([_\\w]+)\\(",
+					"captures": {
+						"1" : {
+							"name" : "entity.name.function"
+						}
+					}
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.pup",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.pup",
+					"match": "\\\\."
+				}
+			]
+		},
+		"number-literals": {
+			"patterns": [
+				{
+					"name"  : "constant.numeric",
+					"match" : "\\b[\\d_]+\\b"
+				},
+				{
+					"name"  : "constant.numeric.binary",
+					"match" : "\\b0b[0-1_]+\\b"
+				},
+				{
+					"name"  : "constant.numeric.hex",
+					"match" : "\\b0x[\\d_a-fA-F]+\\b"
+				}
+			]
+		},
+		"line-comment": {
+			"patterns": [{
+				"match": "//.*$",
+				"name": "comment.line.pup"
+			}]
+		},
+		"block-comment": {
+			"patterns": [{
+				"begin": "/\\*",
+				"end": "\\*/",
+				"name": "comment.block.pup"
+			}]
+		}
+	},
+	"scopeName": "source.pup"
+}
