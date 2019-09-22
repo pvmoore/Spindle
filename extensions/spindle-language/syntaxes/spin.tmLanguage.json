@@ -1,6 +1,6 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "Puppeteer",
+	"name": "Spindle",
 	"patterns": [
 		{
 			"include": "#keywords"
@@ -26,19 +26,19 @@
 		"keywords": {
 			"patterns": [
 				{
-					"name": "keyword.control.pup",
+					"name": "keyword.control.spin",
 					"match": "\\b(if|while|return)\\b"
 				},
 				{
-					"name": "storage.type.pup",
+					"name": "storage.type.spin",
 					"match": "\\b(bool|byte|short|int|long|float|double|void|struct|fn|array|anytype)(\\**|\\b)"
 				},
 				{
-					"name" : "storage.modifier.pup",
+					"name" : "storage.modifier.spin",
 					"match": "\\b(pub)\\b"
 				},
 				{
-					"name" : "support.function.pup",
+					"name" : "support.function.spin",
 					"match" : "@[_\\w]+\\b"
 				}
 			]
@@ -56,12 +56,12 @@
 			]
 		},
 		"strings": {
-			"name": "string.quoted.double.pup",
+			"name": "string.quoted.double.spin",
 			"begin": "\"",
 			"end": "\"",
 			"patterns": [
 				{
-					"name": "constant.character.escape.pup",
+					"name": "constant.character.escape.spin",
 					"match": "\\\\."
 				}
 			]
@@ -85,16 +85,16 @@
 		"line-comment": {
 			"patterns": [{
 				"match": "//.*$",
-				"name": "comment.line.pup"
+				"name": "comment.line.spin"
 			}]
 		},
 		"block-comment": {
 			"patterns": [{
 				"begin": "/\\*",
 				"end": "\\*/",
-				"name": "comment.block.pup"
+				"name": "comment.block.spin"
 			}]
 		}
 	},
-	"scopeName": "source.pup"
+	"scopeName": "source.spin"
 }

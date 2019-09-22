@@ -1,0 +1,25 @@
+{
+    "name": "spindle",
+    "displayName": "spindle",
+    "description": "Spindle language syntax highlighting support",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.38.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "spin",
+            "aliases": ["Spindle", "spin"],
+            "extensions": [".spin"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "spin",
+            "scopeName": "source.spin",
+            "path": "./syntaxes/spin.tmLanguage.json"
+        }]
+    }
+}
