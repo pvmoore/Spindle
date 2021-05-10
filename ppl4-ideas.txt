@@ -1,0 +1,125 @@
+///////////////////////////////////////////////////////
+// variables
+///////////////////////////////////////////////////////
+Allow variables to be defined with just an equals.
+Modifying requires a different syntax:
+
+// declare
+a:int
+
+// declare and define variable 'a'
+a       = 1
+a       = 1i32 // 1u8
+a:int   = 1
+
+// modify the value of 'a'
+a := 2
+a += 1
+
+
+
+///////////////////////////////////////////////////////
+// functions
+///////////////////////////////////////////////////////
+foo = fn (e:int) void {}
+foo = fn (e:int) {}
+foo = fn (a,b:int) {}
+fpp = fn {}                 // fn() void
+
+FN = fn(a:int)void          // 'a' not really used here
+FN = fn(int)void
+
+bar = fn(a:int) {  }        // can't do FN {} because we need to explicitly specify the parameter name
+
+each = fn (this:List, fn(v:T, index:int)void) {
+
+}
+list.each( fn(v,i) { } )
+
+list.map(fn(v:float) { v.toInt() } )
+list.map(fn(v) { v.toInt() } )
+
+toFloat = fn(i:int) float {
+    /*implicit return*/
+    @cast(float, i)
+}
+toString = fn(this:Thing) string {
+    `${this.name} ${this.age}`
+}
+
+add = fn(this:ref Thing, v:int) {
+
+}
+T = packed struct(
+    name           : string,
+    doAThing       : fn(int),
+    doAnotherThing : fn(float)
+)
+add = fn(this:ref T, v:int) {
+    // use this.name
+}
+add = fn(this:struct(name:string), v:int) {
+
+}
+
+foo = fn(a:ref int) {}
+i:int
+j:ref int
+foo(ref i)
+foo(j)
+
+// structs ///////////////////////////////////////////////////////////
+// try to have all structs be anonymous
+// use duck-typing like javascript
+
+//////////////////////////////////////
+// struct declarations:
+//////////////////////////////////////
+    s : struct(name:int)
+    s : struct(int)         // matches struct(name:int) ?
+    S = struct(name:int)
+    s : S
+
+//////////////////////////////////////
+// struct definitions:
+//////////////////////////////////////
+    struct { name: 3 }  // struct(name:int)
+    struct { 3 }        // struct(int)
+
+b = struct{
+    name:"peter",
+    age:23
+}
+
+a : struct(prop:int) = struct{prop:10}  // struct(prop:int)
+a                    = struct{prop:10}  // struct(prop:int)
+
+
+assert @typeOf(b) is struct(string,int)
+
+Thing = struct (name:string, age:int)
+
+
+// templates ///////////////////////////////////////////////////////////
+foo = fn(a:$T, b:$B) {  // foo is fn(a:$T, b:$B)void
+
+}
+foo<int,float>(10, 23f)
+
+S = struct($A, float)               // S is struct($A, float)
+S = struct(prop:$A, prop2:float)    // S is struct(prop:$A, prop2:float)
+
+
+List = struct(len:int, array:T$[])
+
+add = fn(this:ref List<$T>, value:$T) void {    // fn(ref List<$T>, $T) void
+
+}
+
+/////////////////////////////////////////////////////////
+// accessibility
+/////////////////////////////////////////////////////////
+
+// Everything within the same file is accessible
+// Properties and functions external to a module are readonly unless markes as 'pub'
+

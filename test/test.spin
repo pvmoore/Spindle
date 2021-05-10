@@ -14,6 +14,38 @@
 //b = fn(a:int->void)
 //c:fn(a:int->float)
 
+dir_deg = fn fn float(float) (d : int)  {
+
+}
+b = fn float(f:float) {
+
+}
+b = fn(f:float):float {
+
+}
+b = fn(f:float) float {
+
+}
+b = fn(f:float) return float {
+
+}
+c = fn(f:float -> fn(float->float)) {
+
+}
+c = fn(f:float => fn(float=>float)) {
+
+}
+c = fn(f:float >> fn(float>>float)) {
+
+}
+c = fn(f:float) : fn(float):float {
+
+}
+c = fn(f:float) return fn(float) return float {
+
+}
+
+
 // basic initialisers
 //a = 3
 //b = int{2}
